@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity\Manager\Interfaces;
+namespace Swe\CoreBundle\Entity\Manager\Interfaces;
 
 interface GenericManagerInterface
 {

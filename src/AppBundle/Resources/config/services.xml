@@ -7,7 +7,10 @@
  
 
     <parameters>
-        <parameter key="swe.resource.controller">AppBundle\Controller\CrudController</parameter>
+        <parameter key="swe.resource.controller">Swe\CrudBundle\Controller\CrudController</parameter>
+        <parameter key="swe.resource.configuration">Swe\CrudBundle\Controller\Configuration</parameter>
+        <parameter key="swe_app.post.resource">AppBundle\Entity\Post</parameter>
+        <parameter key="swe_app.user.resource">AppBundle\Entity\User</parameter>
     </parameters>
     <services>
       
@@ -15,6 +18,23 @@
             <argument type="service" id="service_container" />
             <argument type="service" id="swe_app.post.manager" />
             <argument type="service" id="swe_app.post.form.handler" />
+        </service>
+        <service id="swe_app.post.configuration"   class="%swe.resource.configuration%">
+            <argument type="service" id="service_container" />
+            <argument type="service" id="swe_app.post.manager" />
+            <argument>%swe_app.post.resource%</argument>
+        </service>
+        
+        
+        <service id="swe_app.user.controller"   class="%swe.resource.controller%">
+            <argument type="service" id="service_container" />
+            <argument type="service" id="swe_app.user.manager" />
+            <argument type="service" id="swe_app.user.form.handler" />
+        </service>
+        <service id="swe_app.user.configuration"   class="%swe.resource.configuration%">
+            <argument type="service" id="service_container" />
+            <argument type="service" id="swe_app.user.manager" />
+            <argument>%swe_app.user.resource%</argument>
         </service>
     </services>
 </container>

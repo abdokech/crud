@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Repository;
+namespace Swe\CoreBundle\Repository;
 
-use AppBundle\Repository\Interfaces\GenericRepositoryInterface;
+use Swe\CoreBundle\Repository\Interfaces\GenericRepositoryInterface;
 use Symfony\Component\Translation\Exception\NotFoundResourceException;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;

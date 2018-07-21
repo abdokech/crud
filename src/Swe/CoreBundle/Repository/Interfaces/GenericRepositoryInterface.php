@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\Repository\Interfaces;
+namespace Swe\CoreBundle\Repository\Interfaces;
 
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;

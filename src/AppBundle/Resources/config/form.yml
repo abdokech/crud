@@ -1,13 +1,10 @@
 services:
-
-    app_core.entity_management_guesser:
-      class: AppBundle\Services\EntityManagementGuesser
-
     swe_app.post.form.handler:
-        class: AppBundle\Form\Handler\PostFormHandler
+        class: Swe\CrudBundle\Form\Handler\ResourceFormHandler
         calls:
-           - [setNewPostFormHandlerStrategy, ['@swe_app.new_post.form.handler.strategy']]
-           - [setUpdatePostFormHandlerStrategy, ['@swe_app.update_post.form.handler.strategy']]
+           - [setNewResourceFormHandlerStrategy, ['@swe_app.new_post.form.handler.strategy']]
+           - [setUpdateResourceFormHandlerStrategy, ['@swe_app.update_post.form.handler.strategy']]
+           - [setConfiguration, ['@swe_app.post.configuration']]
 
     swe_app.new_post.form.handler.strategy:
         class: AppBundle\Form\Handler\NewPostFormHandlerStrategy
@@ -25,6 +22,31 @@ services:
             - "@form.factory"
             - "@router"
 
+
+    swe_app.user.form.handler:
+        class: Swe\CrudBundle\Form\Handler\ResourceFormHandler
+        calls:
+           - [setNewResourceFormHandlerStrategy, ['@swe_app.new_user.form.handler.strategy']]
+           - [setUpdateResourceFormHandlerStrategy, ['@swe_app.update_user.form.handler.strategy']]
+           - [setConfiguration, ['@swe_app.user.configuration']]
+
+    swe_app.new_user.form.handler.strategy:
+        class: AppBundle\Form\Handler\NewUserFormHandlerStrategy
+        arguments:
+            - "@translator"
+            - "@swe_app.user.manager"
+            - "@form.factory"
+            - "@router"
+
+    swe_app.update_user.form.handler.strategy:
+        class: AppBundle\Form\Handler\UpdateUserFormHandlerStrategy
+        arguments:
+            - "@translator"
+            - "@swe_app.user.manager"
+            - "@form.factory"
+            - "@router"
+            
+            
     swe_app.post_search.form:
             class: AppBundle\Form\Type\ActorSearchFormType
             tags:

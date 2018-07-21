@@ -13,8 +13,8 @@ class PostType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('name')
-                ->add('content')
+                ->add('nom')
+                ->add('prenom')
                 ->add('Valider', 'submit', array(
                     'attr' => ['class' => 'btn btn-primary btn-lg btn-block'],
                     'label' => 'valider'
@@ -27,7 +27,7 @@ class PostType extends AbstractType {
      */
     public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Post'
+            'data_class' => 'AppBundle\Entity\User'
         ));
     }
 
@@ -35,7 +35,7 @@ class PostType extends AbstractType {
      * {@inheritdoc}
      */
     public function getBlockPrefix() {
-        return 'appbundle_post';
+        return 'appbundle_user';
     }
 
 }

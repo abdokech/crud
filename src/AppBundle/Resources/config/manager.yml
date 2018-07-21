@@ -10,4 +10,13 @@ services:
         tags:
             - { name: swe_app.manager_services }
 
-  
+    swe_app.user.manager:
+        class: AppBundle\Entity\Manager\UserManager
+        arguments:  ["@swe_app.user.repository"]
+        calls:
+              - [setFormFactory, ['@form.factory']]
+              - [setRouter, ['@router']]
+              - [setSearchFormType, ['AppBundle\Form\Type\UserSearchFormType']]
+        lazy: true
+        tags:
+            - { name: swe_app.manager_services }

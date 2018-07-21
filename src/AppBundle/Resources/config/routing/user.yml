@@ -1,0 +1,30 @@
+users_list:
+    path: '/list'
+    defaults: 
+        _controller: swe_app.user.controller:listAction
+        _template: AppBundle:User:list.html.twig 
+    methods: [GET]
+user_show:
+    path: '/show/{id}'
+    defaults: 
+        _controller: swe_app.user.controller:showAction
+        _template: AppBundle:User:show.html.twig 
+    methods: [GET]
+
+user_new:
+    path: /new
+    defaults: 
+        _controller: swe_app.user.controller:crudAction
+        _template: AppBundle:User:crud.html.twig  
+    methods: [GET,USER]
+user_edit:
+    path: '/{id}/edit'
+    defaults: 
+        _controller: swe_app.user.controller:crudAction
+        _template: AppBundle:User:crud.html.twig   
+    methods: [GET,PUT]
+user_delete:
+    path: '/delete/{id}'
+    defaults: 
+        _controller: swe_app.user.controller:deleteAction
+    methods: [GET]

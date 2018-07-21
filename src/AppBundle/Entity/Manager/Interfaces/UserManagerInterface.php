@@ -4,10 +4,9 @@ namespace AppBundle\Entity\Manager\Interfaces;
 use Swe\CoreBundle\Entity\Manager\Interfaces\GenericManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-interface PostManagerInterface extends GenericManagerInterface
+interface UserManagerInterface extends GenericManagerInterface
 {
     /**
      * @param int $limit

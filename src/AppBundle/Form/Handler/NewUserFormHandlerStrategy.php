@@ -1,15 +1,15 @@
 <?php
 namespace AppBundle\Form\Handler;
 
-use AppBundle\Entity\Manager\Interfaces\PostManagerInterface;
-use AppBundle\Form\Type\PostType;
+use AppBundle\Entity\Manager\Interfaces\UserManagerInterface;
+use AppBundle\Form\Type\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Swe\CrudBundle\Form\Handler\AbstractResourceFormHandlerStrategy;
 
-class NewPostFormHandlerStrategy extends AbstractResourceFormHandlerStrategy
+class NewUserFormHandlerStrategy extends AbstractResourceFormHandlerStrategy
 {
     /**
      * @var TranslatorInterface
@@ -17,14 +17,14 @@ class NewPostFormHandlerStrategy extends AbstractResourceFormHandlerStrategy
     protected $translator;
 
     /**
-     * @var PostManagerInterface
+     * @var UserManagerInterface
      */
-    protected $postManager;
+    protected $userManager;
 
     /**
      * @var FormFactoryInterface
      */
-    private $formPost;
+    private $formUser;
 
     /**
      * @var RouterInterface
@@ -35,29 +35,29 @@ class NewPostFormHandlerStrategy extends AbstractResourceFormHandlerStrategy
      * Constructor.
      *
      * @param TranslatorInterface $translator Service of translation
-     * @param PostManagerInterface $postManager
-     * @param FormFactoryInterface $formPost
+     * @param UserManagerInterface $userManager
+     * @param FormFactoryInterface $formUser
      * @param RouterInterface $router
      */
     public function __construct
     (
         TranslatorInterface $translator,
-        PostManagerInterface $postManager,
-        FormFactoryInterface $formPost,
+        UserManagerInterface $userManager,
+        FormFactoryInterface $formUser,
         RouterInterface $router
     )
     {
         $this->translator = $translator;
-        $this->postManager = $postManager;
-        $this->formPost = $formPost;
+        $this->userManager = $userManager;
+        $this->formUser = $formUser;
         $this->router = $router;
     }
 
     public function createForm($resource)
     {
-        $this->form = $this->formPost->create(PostType::class, $resource, array(
-            'action' => $this->router->generate('post_new'),
-            'method' => 'POST',
+        $this->form = $this->formUser->create(UserType::class, $resource, array(
+            'action' => $this->router->generate('user_new'),
+            'method' => 'USER',
         ));
 
         return $this->form;
@@ -65,7 +65,7 @@ class NewPostFormHandlerStrategy extends AbstractResourceFormHandlerStrategy
 
     public function handleForm(Request $request,$resource)
     {
-        $this->postManager->save($resource, true, true);
+        $this->userManager->save($resource, true, true);
 
         return $this->translator
             ->trans('acteur.ajouter.succes', array(

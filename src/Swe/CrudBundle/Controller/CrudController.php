@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace Swe\CrudBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\Container;
-use AppBundle\Entity\Manager\Interfaces\ManagerInterface;
-use AppBundle\Form\Handler\FormHandlerInterface;
+use Swe\CoreBundle\Entity\Manager\Interfaces\GenericManagerInterface;
+use Swe\CrudBundle\Form\Handler\Interfaces\FormHandlerInterface;
 
 class CrudController extends Controller {
 
@@ -19,7 +19,7 @@ class CrudController extends Controller {
         return $this->container;
     }
 
-    public function __construct(Container $container, ManagerInterface $manager, FormHandlerInterface $handlerForm) {
+    public function __construct(Container $container, GenericManagerInterface $manager, FormHandlerInterface $handlerForm) {
         $this->container = $container;
         $this->manager = $manager;
         $this->handlerForm = $handlerForm;
@@ -27,31 +27,31 @@ class CrudController extends Controller {
 
     public function listAction(Request $request) {
 
-        $posts = $this->getResourceManager()->getResultFilterPaginated();
+        $resources = $this->getResourceManager()->getResultFilterPaginated();
 
         return $this->render($request->get('_template'), array(
-                    'posts' => $posts,
+                    'resources' => $resources,
         ));
     }
 
     public function showAction(Request $request) {
 
-        $post = $this->getResourceManager()->find($request->get('id'));
+        $resource = $this->getResourceManager()->find($request->get('id'));
 
         return $this->render($request->get('_template'), array(
-                    'post' => $post,
+                    'resource' => $resource,
         ));
     }
 
     public function crudAction(Request $request) {
 
         if ($request->get('id')) {
-            $post = $this->getResourceManager()->find($request->get('id'));
+            $resource = $this->getResourceManager()->find($request->get('id'));
         } else {
-            $post = null;
+            $resource = null;
         }
 
-        $entityToProcess = $this->getResourceFormHandler()->processForm($post);
+        $entityToProcess = $this->getResourceFormHandler()->processForm($resource);
 
         if ($this->getResourceFormHandler()->handleForm($this->getResourceFormHandler()->getForm(), $entityToProcess, $request)) {
             $this->addFlash('success', $this->getResourceFormHandler()->getMessage());
@@ -61,15 +61,15 @@ class CrudController extends Controller {
 
         return $this->render($request->get('_template'), array(
                     'form' => $this->getResourceFormHandler()->createView(),
-                    'post' => $entityToProcess,
+                    'resource' => $entityToProcess,
         ));
     }
 
     public function deleteAction(Request $request) {
 
-        $post = $this->getResourceManager()->find($request->get('id'));
+        $resource = $this->getResourceManager()->find($request->get('id'));
 
-        $this->getResourceManager()->remove($post);
+        $this->getResourceManager()->remove($resource);
 
         return new RedirectResponse($this->get('router')->generate('posts_list'));
     }

@@ -4,12 +4,12 @@ namespace AppBundle\Entity\Manager;
 
 use Swe\CoreBundle\Entity\Manager\AbstractGenericManager;
 use Swe\CoreBundle\Repository\AbstractGenericRepository;
-use AppBundle\Entity\Manager\Interfaces\PostManagerInterface;
+use AppBundle\Entity\Manager\Interfaces\UserManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-class PostManager extends AbstractGenericManager implements PostManagerInterface {
+class UserManager extends AbstractGenericManager implements UserManagerInterface {
 
     /**
      * @var FormTypeInterface

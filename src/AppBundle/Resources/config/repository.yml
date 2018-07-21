@@ -4,3 +4,8 @@ services:
         factory: ["@doctrine.orm.default_entity_manager", getRepository]
         arguments: ['AppBundle\Entity\Post']
         lazy: true
+    swe_app.user.repository:
+        class: AppBundle\Repository\UserRepository
+        factory: ["@doctrine.orm.default_entity_manager", getRepository]
+        arguments: ['AppBundle\Entity\User']
+        lazy: true

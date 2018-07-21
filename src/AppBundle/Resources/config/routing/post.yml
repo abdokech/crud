@@ -2,7 +2,7 @@ posts_list:
     path: '/list'
     defaults: 
         _controller: swe_app.post.controller:listAction
-        _template: AppBundle:post:list.html.twig 
+        _template: AppBundle:Post:list.html.twig 
     methods: [GET]
 post_show:
     path: '/show/{id}'

@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle\Entity\Manager;
+namespace Swe\CoreBundle\Entity\Manager;
 
-use AppBundle\Entity\Manager\Interfaces\GenericManagerInterface;
-use AppBundle\Repository\AbstractGenericRepository;
+use Swe\CoreBundle\Entity\Manager\Interfaces\GenericManagerInterface;
+use Swe\CoreBundle\Repository\AbstractGenericRepository;
 
 abstract class AbstractGenericManager implements GenericManagerInterface
 {
