@@ -1,0 +1,31 @@
+services:
+
+    app_core.entity_management_guesser:
+      class: AppBundle\Services\EntityManagementGuesser
+
+    swe_app.post.form.handler:
+        class: AppBundle\Form\Handler\PostFormHandler
+        calls:
+           - [setNewPostFormHandlerStrategy, ['@swe_app.new_post.form.handler.strategy']]
+           - [setUpdatePostFormHandlerStrategy, ['@swe_app.update_post.form.handler.strategy']]
+
+    swe_app.new_post.form.handler.strategy:
+        class: AppBundle\Form\Handler\NewPostFormHandlerStrategy
+        arguments:
+            - "@translator"
+            - "@swe_app.post.manager"
+            - "@form.factory"
+            - "@router"
+
+    swe_app.update_post.form.handler.strategy:
+        class: AppBundle\Form\Handler\UpdatePostFormHandlerStrategy
+        arguments:
+            - "@translator"
+            - "@swe_app.post.manager"
+            - "@form.factory"
+            - "@router"
+
+    swe_app.post_search.form:
+            class: AppBundle\Form\Type\ActorSearchFormType
+            tags:
+                - { name: form.type, alias: actor_search }

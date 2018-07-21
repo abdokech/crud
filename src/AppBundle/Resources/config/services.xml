@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+ 
+
+    <parameters>
+        <parameter key="swe.resource.controller">AppBundle\Controller\CrudController</parameter>
+    </parameters>
+    <services>
+      
+        <service id="swe_app.post.controller"   class="%swe.resource.controller%">
+            <argument type="service" id="service_container" />
+            <argument type="service" id="swe_app.post.manager" />
+            <argument type="service" id="swe_app.post.form.handler" />
+        </service>
+    </services>
+</container>

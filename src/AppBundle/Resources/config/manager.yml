@@ -1,0 +1,13 @@
+services:
+    swe_app.post.manager:
+        class: AppBundle\Entity\Manager\PostManager
+        arguments:  ["@swe_app.post.repository"]
+        calls:
+              - [setFormFactory, ['@form.factory']]
+              - [setRouter, ['@router']]
+              - [setSearchFormType, ['AppBundle\Form\Type\PostSearchFormType']]
+        lazy: true
+        tags:
+            - { name: swe_app.manager_services }
+
+  

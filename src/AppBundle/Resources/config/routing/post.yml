@@ -1,0 +1,30 @@
+posts_list:
+    path: '/list'
+    defaults: 
+        _controller: swe_app.post.controller:listAction
+        _template: AppBundle:post:list.html.twig 
+    methods: [GET]
+post_show:
+    path: '/show/{id}'
+    defaults: 
+        _controller: swe_app.post.controller:showAction
+        _template: AppBundle:Post:show.html.twig 
+    methods: [GET]
+
+post_new:
+    path: /new
+    defaults: 
+        _controller: swe_app.post.controller:crudAction
+        _template: AppBundle:Post:crud.html.twig  
+    methods: [GET,POST]
+post_edit:
+    path: '/{id}/edit'
+    defaults: 
+        _controller: swe_app.post.controller:crudAction
+        _template: AppBundle:Post:crud.html.twig   
+    methods: [GET,PUT]
+post_delete:
+    path: '/delete/{id}'
+    defaults: 
+        _controller: swe_app.post.controller:deleteAction
+    methods: [GET]

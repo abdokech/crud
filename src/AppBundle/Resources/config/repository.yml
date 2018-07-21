@@ -1,0 +1,6 @@
+services:
+    swe_app.post.repository:
+        class: AppBundle\Repository\PostRepository
+        factory: ["@doctrine.orm.default_entity_manager", getRepository]
+        arguments: ['AppBundle\Entity\Post']
+        lazy: true
