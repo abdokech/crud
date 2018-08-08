@@ -7,8 +7,6 @@
  
 
     <parameters>
-        <parameter key="swe.resource.controller">Swe\CrudBundle\Controller\CrudController</parameter>
-        <parameter key="swe.resource.configuration">Swe\CrudBundle\Controller\Configuration</parameter>
         <parameter key="swe_app.post.resource">AppBundle\Entity\Post</parameter>
         <parameter key="swe_app.user.resource">AppBundle\Entity\User</parameter>
     </parameters>

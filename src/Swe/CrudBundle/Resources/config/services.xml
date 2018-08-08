@@ -4,13 +4,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
-    <services>
-        <service id="swe_crud.example" class="Swe\CrudBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
-        </service>
-    </services>
-    -->
+    <parameters>
+        <parameter key="swe.resource.controller">Swe\CrudBundle\Controller\CrudController</parameter>
+        <parameter key="swe.resource.configuration">Swe\CrudBundle\Controller\Configuration</parameter>
+    </parameters>
 </container>

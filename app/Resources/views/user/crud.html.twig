@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Post edit</h1>
+    <h1>User edit</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -9,7 +9,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('posts_list') }}">Back to the list</a>
+            <a href="{{ path('users_list') }}">Back to the list</a>
         </li>
     </ul>
 {% endblock %}

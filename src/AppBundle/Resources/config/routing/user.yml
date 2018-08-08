@@ -2,29 +2,32 @@ users_list:
     path: '/list'
     defaults: 
         _controller: swe_app.user.controller:listAction
-        _template: AppBundle:User:list.html.twig 
+        _template: user/list.html.twig 
     methods: [GET]
 user_show:
     path: '/show/{id}'
     defaults: 
         _controller: swe_app.user.controller:showAction
-        _template: AppBundle:User:show.html.twig 
+        _template: user/show.html.twig 
     methods: [GET]
 
 user_new:
     path: /new
     defaults: 
         _controller: swe_app.user.controller:crudAction
-        _template: AppBundle:User:crud.html.twig  
-    methods: [GET,USER]
+        _template: user/crud.html.twig
+        _redirect : users_list
+    methods: [GET,POST]
 user_edit:
     path: '/{id}/edit'
     defaults: 
         _controller: swe_app.user.controller:crudAction
-        _template: AppBundle:User:crud.html.twig   
+        _template: user/crud.html.twig   
+        _redirect_to : users_list
     methods: [GET,PUT]
 user_delete:
     path: '/delete/{id}'
     defaults: 
         _controller: swe_app.user.controller:deleteAction
+        _redirect : users_list
     methods: [GET]

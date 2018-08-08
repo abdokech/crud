@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Users list</h1>
+    <h1>Posts list</h1>
 
     <table>
         <thead>
@@ -13,21 +13,21 @@
             </tr>
         </thead>
         <tbody>
-        {% for user in users %}
+        {% for post in resources %}
             <tr>
-                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.content }}</td>
+                <td><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.id }}</a></td>
+                <td>{{ post.name }}</td>
+                <td>{{ post.content }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('user_show', { 'id': user.id }) }}">show</a>
+                            <a href="{{ path('post_show', { 'id': post.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('user_edit', { 'id': user.id }) }}">edit</a>
+                            <a href="{{ path('post_edit', { 'id': post.id }) }}">edit</a>
                         </li>
                         <li>
-                            <a href="{{ path('user_delete', { 'id': user.id }) }}">delete</a>
+                            <a href="{{ path('post_delete', { 'id': post.id }) }}">delete</a>
                         </li>
                     </ul>
                 </td>
@@ -38,7 +38,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('user_new') }}">Create a new user</a>
+            <a href="{{ path('post_new') }}">Create a new post</a>
         </li>
     </ul>
 {% endblock %}

@@ -57,7 +57,7 @@ class NewUserFormHandlerStrategy extends AbstractResourceFormHandlerStrategy
     {
         $this->form = $this->formUser->create(UserType::class, $resource, array(
             'action' => $this->router->generate('user_new'),
-            'method' => 'USER',
+            'method' => 'POST',
         ));
 
         return $this->form;
@@ -69,7 +69,7 @@ class NewUserFormHandlerStrategy extends AbstractResourceFormHandlerStrategy
 
         return $this->translator
             ->trans('acteur.ajouter.succes', array(
-                '%nom%' => $resource->getName(),
+                '%nom%' => $resource->getNom(),
             ));
     }
 }

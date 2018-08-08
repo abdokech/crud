@@ -1,6 +1,8 @@
-#app:
-#    resource: '@AppBundle/Controller/'
-#    type: annotation
 swe_post:
     resource: "@AppBundle/Resources/config/routing/post.yml"
     prefix:   /swe/post/
+    
+swe_user:
+    resource: "@AppBundle/Resources/config/routing/user.yml"
+    prefix:   /swe/user/
+    

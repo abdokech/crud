@@ -64,7 +64,7 @@ class UpdateUserFormHandlerStrategy extends AbstractResourceFormHandlerStrategy 
 
         return $this->translator
                         ->trans('acteur.modifier.succes', array(
-                            '%nom%' => $resource->getName(),
+                            '%nom%' => $resource->getNom(),
         ));
     }
 
